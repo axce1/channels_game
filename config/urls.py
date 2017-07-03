@@ -26,5 +26,7 @@ urlpatterns = [
     url(r'^register/', views.CreateUserView.as_view()),
     url(r'^login/$', login, {'template_name': 'login.html'}),
     url(r'^logout/$', logout, {'next_page': '/'}),
+
+    url(r'^lobby/$', views.LobbyView.as_view()),
     url(r'^$', views.HomeView.as_view()),
 ]

@@ -1,5 +1,5 @@
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
@@ -22,3 +22,18 @@ class CreateUserView(CreateView):
                                 password=password)
         login(self.request, new_user)
         return valid
+
+
+class LobbyView(LoginRequiredMixin, TemplateView):
+    template_name = 'components/lobby/lobby.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        return super().dispatch(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        ctx = super().get_context_data(self, **kwargs)
+        available_games = [{'creator': game.creator.username, 'id': game.pk}
+                           for game in Game.get_available_games()]
+        player_games = Game.get_games_for_player(self.request.user)
+
+        return ctx
