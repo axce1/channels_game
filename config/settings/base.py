@@ -180,6 +180,9 @@ STATIC_URL = '/static/'
 #  str(ROOT_DIR, "static"),
 #  ]
 
+LOGIN_REDIRECT_URL = '/lobby/'
+LOGIN_URL = '/login/'
+
 
 CHANNEL_LAYERS = {
     "default": {
