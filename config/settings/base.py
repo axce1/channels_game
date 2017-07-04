@@ -52,6 +52,7 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'channels',
+    'webpack_loader',
 ]
 
 # Apps specific for this project go here.
@@ -189,4 +190,11 @@ CHANNEL_LAYERS = {
         "BACKNED": "asgiref.inmemory.ChannelLayer",
         "ROUTING": "config.routing.channel_routing",
     },
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': '/static/bundlest/',
+        'STATS_FILES': os.path.join(BASE_DIR, 'webpack-stats.json')
+    }
 }

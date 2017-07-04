@@ -2,3 +2,4 @@ channels
 django
 django-environ
 psycopg2
+django-webpack-loader

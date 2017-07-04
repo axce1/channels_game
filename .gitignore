@@ -15,3 +15,7 @@ secret_key
 
 .env
 .pre-commit-config.yaml
+
+node_modules/
+package-lock.json
+webpack-stats.json
