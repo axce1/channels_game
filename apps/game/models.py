@@ -16,6 +16,10 @@ class Game(models.Model):
     rows = models.IntegerField(default=6)
     current_turn = models.ForeignKey(User, related_name='current_turn')
 
+    completed = models.DateTimeField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    modifed = models.DateTimeField(auto_now=True)
+
     def __unicode__(self):
         return 'Game #{}'.format(self.pk)
 
