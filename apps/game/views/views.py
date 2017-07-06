@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
+from ..models import Game
+
 
 class HomeView(TemplateView):
     template_name = 'home.html'
@@ -28,10 +30,10 @@ class LobbyView(LoginRequiredMixin, TemplateView):
     template_name = 'components/lobby/lobby.html'
 
     def dispatch(self, request, *args, **kwargs):
-        return super().dispatch(request, *args, **kwargs)
+        return super(LobbyView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
-        ctx = super().get_context_data(self, **kwargs)
+        ctx = super(LobbyView, self).get_context_data(**kwargs)
         available_games = [{'creator': game.creator.username, 'id': game.pk}
                            for game in Game.get_available_games()]
         player_games = Game.get_games_for_player(self.request.user)

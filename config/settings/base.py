@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.10/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
+import os
 import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -177,9 +178,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
 STATIC_URL = '/static/'
-#  STATICFILES_DIRS = [
-#  str(ROOT_DIR, "static"),
-#  ]
+STATICFILES_DIRS = [
+    str(APPS_DIR.path() + 'static'),
+]
 
 LOGIN_REDIRECT_URL = '/lobby/'
 LOGIN_URL = '/login/'
@@ -194,7 +195,7 @@ CHANNEL_LAYERS = {
 
 WEBPACK_LOADER = {
     'DEFAULT': {
-        'BUNDLE_DIR_NAME': '/static/bundlest/',
-        'STATS_FILES': os.path.join(BASE_DIR, 'webpack-stats.json')
+        'BUNDLE_DIR_NAME': '/bundles/',
+        'STATS_FILES': ROOT_DIR + 'webpack-stats.json'
     }
 }
