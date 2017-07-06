@@ -26,7 +26,7 @@ class LobbyBase extends React.Component {
     }
  
     componentDidMount() {
-        getPlayerGames()
+        //getPlayerGames()
     }
  
     componentWillUnmount() {
@@ -35,7 +35,7 @@ class LobbyBase extends React.Component {
  
     handleData(data) {
         let result = JSON.parse(data)
-        this.getPlayerGames()
+        //this.getPlayerGames()
         this.setState({available_game_list: result})
     }
  
@@ -47,11 +47,11 @@ class LobbyBase extends React.Component {
     render() {
         return (
             <div className="row">
-            <h1>ЕРУ</h1>            
                 <Websocket ref="socket" url={this.props.socket}
                     onMessage={this.handleData.bind(this)} reconnect={true}/>
                 <div className="col-lg-4">
-                    <PlayerGames player={this.props.current_user} game_list={this.state.player_game_list} sendSocketMessage={this.sendSocketMessage} />
+                    <PlayerGames player={this.props.current_user} game_list={this.state.player_game_list}
+                            sendSocketMessage={this.sendSocketMessage} />
                 </div>
             </div> 
         )

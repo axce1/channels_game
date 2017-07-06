@@ -1,12 +1,13 @@
 import React from 'react'
 
-class PrayerGames extends React.Component {
+class PlayerGames extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             game_list: this.props.game_list
         }
 
+        // bind button click
         this.onCreateGameClick = this.onCreateGameClick.bind(this)
         this.renderButton = this.renderButton.bind(this)
         this.renderOpponent = this.renderOpponent.bind(this)
@@ -15,6 +16,7 @@ class PrayerGames extends React.Component {
     onCreateGameClick(event) {
         this.props.sendSocketMessage({action: "create_game"})
     }
+
 
     componentWillReceiveProps(newProp) {
         this.setState({game_list: newProp.game_list})
@@ -28,6 +30,7 @@ class PrayerGames extends React.Component {
         } else {
             return "Play"
         }
+
     }
 
     renderOpponent(game) {
@@ -76,3 +79,15 @@ class PrayerGames extends React.Component {
         )
     }
 }
+
+PlayerGames.defaultProps = {
+
+};
+
+PlayerGames.propTypes = {
+    game_list: React.PropTypes.array,
+    player: React.PropTypes.object
+};
+
+
+export default PlayerGames
