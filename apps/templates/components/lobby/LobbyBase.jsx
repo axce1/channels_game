@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Websocket from 'react-websocket'
 import $ from 'jquery'
+
+import PlayerGames from './PlayerGames'
  
 class LobbyBase extends React.Component {
  
@@ -14,8 +16,18 @@ class LobbyBase extends React.Component {
  
         this.sendSocketMessage = this.sendSocketMessage.bind(this);
     }
+
+    getPlayerGames() {
+        this.severRequest = $.get('http://localhost:8000/player-games/?format=json', function(result) {
+            this.setState({
+                player_game_list: result,
+            })
+        }.bind(this))
+    }
  
-    componentDidMount() {}
+    componentDidMount() {
+        getPlayerGames()
+    }
  
     componentWillUnmount() {
         this.serverRequest.abort();
@@ -23,7 +35,7 @@ class LobbyBase extends React.Component {
  
     handleData(data) {
         let result = JSON.parse(data)
-        
+        this.getPlayerGames()
         this.setState({available_game_list: result})
     }
  
@@ -38,9 +50,11 @@ class LobbyBase extends React.Component {
             <div className="row">
                 <Websocket ref="socket" url={this.props.socket}
                     onMessage={this.handleData.bind(this)} reconnect={true}/>
-                <span>Lobby Components will go here....</span>
-            </div>
- 
+                <div className="col-lg-4">
+                    <PlayerGames player={this.props.current_user} game_list={this.state.player_game_list}
+                            sendSocketMessage={this.sendSocketMessage} />
+                </div>
+            </div> 
         )
     }
 }
