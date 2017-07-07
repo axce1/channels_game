@@ -193,6 +193,10 @@ CHANNEL_LAYERS = {
     },
 }
 
+print(dir(APPS_DIR))
+print(APPS_DIR.path())
+print(STATICFILES_DIRS[0])
+
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': '/bundles/',
