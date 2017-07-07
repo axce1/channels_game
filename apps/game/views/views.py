@@ -27,7 +27,7 @@ class CreateUserView(CreateView):
 
 
 class LobbyView(LoginRequiredMixin, TemplateView):
-    template_name = 'components/lobby/lobby.html'
+    template_name = 'componets/lobby/lobby.html'
 
     def dispatch(self, request, *args, **kwargs):
         return super(LobbyView, self).dispatch(request, *args, **kwargs)
