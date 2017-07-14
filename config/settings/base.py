@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 import os
+
 import environ
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -54,11 +55,12 @@ DJANGO_APPS = [
 THIRD_PARTY_APPS = [
     'channels',
     'webpack_loader',
+    'rest_framework',
 ]
 
 # Apps specific for this project go here.
 LOCAL_APPS = [
-   'apps.game',
+    'apps.game',
 ]
 
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
@@ -200,7 +202,7 @@ print(STATICFILES_DIRS[0])
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': '/bundles/',
-        'STATS_FILES' : ROOT_DIR + 'webpack-stats.json'
+        'STATS_FILES': ROOT_DIR + 'webpack-stats.json'
         # 'STATS_FILES': os.path.join(ROOT_DIR, 'webpack-stats.json')
     }
 }

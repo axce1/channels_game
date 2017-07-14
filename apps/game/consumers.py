@@ -1,11 +1,13 @@
-import re
 import logging
+import re
+
 from channels import Group
-from channels.sessions import channel_session
 from channels.auth import channel_session_user
 from channels.generic.websockets import JsonWebsocketConsumer
+from channels.sessions import channel_session
 
-from .models import Game, GameSquare
+from .models import Game
+from .models import GameSquare
 
 
 log = logging.getLogger(__name__)

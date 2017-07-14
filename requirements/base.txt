@@ -1,5 +1,6 @@
 channels
 django
 django-environ
-psycopg2
 django-webpack-loader
+djangorestframework
+psycopg2

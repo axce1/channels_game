@@ -1,6 +1,7 @@
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth import authenticate
+from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView
 from django.views.generic import TemplateView
 
