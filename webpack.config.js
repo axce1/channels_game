@@ -8,7 +8,7 @@ module.exports = {
   entry: {lobby: './apps/templates/componets/lobby/index'},
   output: {
     path: path.resolve('./apps/static/bundles/'),
-    filename: '[name]-[hash].js'
+    filename: '[name]-bundle.js'
   },
 
   plugins: [
@@ -18,14 +18,16 @@ module.exports = {
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx$/,
         exclude: /(node_modules)/,
-        loader: 'babel-loader',
-        query: {
-          presets: ['es2015', 'react']
-        }
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015', 'react']
+          }
+        }],
       },
     ]
   },
