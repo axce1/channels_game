@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "15263339356ba46d4c82"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "e8ebe09f405f152f7f45"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -23239,7 +23239,7 @@ var LobbyBase = function (_React$Component) {
     }, {
         key: 'componentDidMount',
         value: function componentDidMount() {
-            getPlayerGames();
+            this.getPlayerGames();
         }
     }, {
         key: 'componentWillUnmount',
@@ -34638,6 +34638,10 @@ return /******/ (function(modules) { // webpackBootstrap
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = __webpack_require__(24);
@@ -34652,13 +34656,13 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var PrayerGames = function (_React$Component) {
-    _inherits(PrayerGames, _React$Component);
+var PlayerGames = function (_React$Component) {
+    _inherits(PlayerGames, _React$Component);
 
-    function PrayerGames(props) {
-        _classCallCheck(this, PrayerGames);
+    function PlayerGames(props) {
+        _classCallCheck(this, PlayerGames);
 
-        var _this = _possibleConstructorReturn(this, (PrayerGames.__proto__ || Object.getPrototypeOf(PrayerGames)).call(this, props));
+        var _this = _possibleConstructorReturn(this, (PlayerGames.__proto__ || Object.getPrototypeOf(PlayerGames)).call(this, props));
 
         _this.state = {
             game_list: _this.props.game_list
@@ -34670,7 +34674,7 @@ var PrayerGames = function (_React$Component) {
         return _this;
     }
 
-    _createClass(PrayerGames, [{
+    _createClass(PlayerGames, [{
         key: "onCreateGameClick",
         value: function onCreateGameClick(event) {
             this.props.sendSocketMessage({ action: "create_game" });
@@ -34777,8 +34781,17 @@ var PrayerGames = function (_React$Component) {
         }
     }]);
 
-    return PrayerGames;
+    return PlayerGames;
 }(_react2.default.Component);
+
+PlayerGames.defaultProps = {};
+
+PlayerGames.propTypes = {
+    game_list: _react2.default.PropTypes.array,
+    player: _react2.default.PropTypes.object
+};
+
+exports.default = PlayerGames;
 
 /***/ })
 /******/ ]);

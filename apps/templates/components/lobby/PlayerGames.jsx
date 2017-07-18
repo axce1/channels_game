@@ -1,6 +1,6 @@
 import React from 'react'
 
-class PrayerGames extends React.Component {
+class PlayerGames extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -76,3 +76,14 @@ class PrayerGames extends React.Component {
         )
     }
 }
+
+PlayerGames.defaultProps = {
+    
+};
+
+PlayerGames.propTypes = {
+    game_list: React.PropTypes.array,
+    player: React.PropTypes.object
+};
+
+export default PlayerGames

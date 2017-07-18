@@ -26,7 +26,7 @@ class LobbyBase extends React.Component {
     }
  
     componentDidMount() {
-        getPlayerGames()
+        this.getPlayerGames()
     }
  
     componentWillUnmount() {
