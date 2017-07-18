@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9defe200e9a5f46e7518"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "15263339356ba46d4c82"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -20695,11 +20695,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var lobby_sock = 'ws://' + window.location.host + "/lobby/";
 var current_user = null;
 
-function render_component() {
-  _reactDom2.default.render(_react2.default.createElement(_LobbyBase2.default, { current_user: current_user, socket: lobby_sock }), document.getElementById('lobby_component'));
-}
+_jquery2.default.get('http://localhost:8000/current-user/?format=json', function (result) {
+    current_user = result;
+    render_component();
+});
 
-render_component();
+function render_component() {
+    _reactDom2.default.render(_react2.default.createElement(_LobbyBase2.default, { current_user: current_user, socket: lobby_sock }), document.getElementById('lobby_component'));
+}
 
 /***/ }),
 /* 85 */

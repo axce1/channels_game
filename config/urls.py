@@ -17,8 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import login
 from django.contrib.auth.views import logout
+from rest_framework.routers import DefaultRouter
 
-from apps.game.views import views
+from apps.game.views import views, api_views
 
 
 urlpatterns = [
@@ -29,4 +30,10 @@ urlpatterns = [
 
     url(r'^lobby/$', views.LobbyView.as_view()),
     url(r'^$', views.HomeView.as_view()),
+
+    url(r'^current-user/', api_views.CurrentUserView.as_view()),
 ]
+
+router = DefaultRouter()
+router.register(r'player-games', api_views.PlayerGameViewSet, 'player_games')
+urlpatterns += router.urls

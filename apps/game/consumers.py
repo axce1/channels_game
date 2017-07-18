@@ -25,7 +25,10 @@ class LobbyConsumer(JsonWebsocketConsumer):
         pass
 
     def receive(self, content, **kwargs):
-        http_user = True
+        channel_session_user = True
+        action = content['action']
+        if action == 'create_game':
+            Game.create_new(self.message.user)
 
     def disconnect(self, message, **kwargs):
         pass

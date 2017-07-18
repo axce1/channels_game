@@ -5,10 +5,13 @@ import $ from 'jquery'
  
 var lobby_sock = 'ws://' + window.location.host + "/lobby/"
 var current_user = null
+
+$.get('http://localhost:8000/current-user/?format=json', function(result){
+    current_user = result
+    render_component()
+})
  
 function render_component(){
     ReactDOM.render(<LobbyBase current_user={current_user} socket={lobby_sock}/>,
         document.getElementById('lobby_component'))
 }
- 
-render_component()
