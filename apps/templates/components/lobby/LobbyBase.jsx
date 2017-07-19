@@ -18,7 +18,7 @@ class LobbyBase extends React.Component {
     }
 
     getPlayerGames() {
-        this.severRequest = $.get('http://localhost:8000/player-games/?format=json', function(result) {
+        this.severRequest = $.get('http://127.0.0.1:8000/player-games/?format=json', function(result) {
             this.setState({
                 player_game_list: result,
             })

@@ -5,6 +5,9 @@ volumes:
   postgres_backup_dev: {}
 
 services:
+  redis:
+    image: redis:alpine
+
   postgres:
     build: ./compose/postgres
     image: channel_postgres
@@ -24,6 +27,7 @@ services:
     command: /start-dev.sh
     depends_on:
       - postgres
+      - redis
     env_file:
       - .env
     volumes:
@@ -32,3 +36,4 @@ services:
       - "8000:8000"
     links:
       - postgres
+      - redis

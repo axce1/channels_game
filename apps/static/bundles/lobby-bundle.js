@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "e8ebe09f405f152f7f45"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "62b1bff8352e0482b828"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -20695,7 +20695,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var lobby_sock = 'ws://' + window.location.host + "/lobby/";
 var current_user = null;
 
-_jquery2.default.get('http://localhost:8000/current-user/?format=json', function (result) {
+_jquery2.default.get('http://127.0.0.1:8000/current-user/?format=json', function (result) {
     current_user = result;
     render_component();
 });
@@ -23230,7 +23230,7 @@ var LobbyBase = function (_React$Component) {
     _createClass(LobbyBase, [{
         key: 'getPlayerGames',
         value: function getPlayerGames() {
-            this.severRequest = _jquery2.default.get('http://localhost:8000/player-games/?format=json', function (result) {
+            this.severRequest = _jquery2.default.get('http://127.0.0.1:8000/player-games/?format=json', function (result) {
                 this.setState({
                     player_game_list: result
                 });
@@ -34698,7 +34698,6 @@ var PlayerGames = function (_React$Component) {
     }, {
         key: "renderOpponent",
         value: function renderOpponent(game) {
-            console.log(game);
             if (game.opponent != null) {
                 return game.opponent.username;
             } else {

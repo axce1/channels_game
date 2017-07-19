@@ -190,8 +190,11 @@ LOGIN_URL = '/login/'
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKNED": "asgiref.inmemory.ChannelLayer",
+        "BACKEND": "asgi_redis.RedisChannelLayer",
         "ROUTING": "config.routing.channel_routing",
+        "CONFIG": {
+            'hosts': [('redis', 6379), ],
+        },
     },
 }
 

@@ -6,7 +6,7 @@ import $ from 'jquery'
 var lobby_sock = 'ws://' + window.location.host + "/lobby/"
 var current_user = null
 
-$.get('http://localhost:8000/current-user/?format=json', function(result){
+$.get('http://127.0.0.1:8000/current-user/?format=json', function(result){
     current_user = result
     render_component()
 })

@@ -31,7 +31,6 @@ class PlayerGames extends React.Component {
     }
 
     renderOpponent(game) {
-        console.log(game)
         if (game.opponent != null) {
             return game.opponent.username
         } else {

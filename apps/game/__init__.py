@@ -1,1 +1,1 @@
-defautl_app_config = 'apps.game.apps.GameConfig'
+# defautl_app_config = 'apps.game.apps.GameConfig'

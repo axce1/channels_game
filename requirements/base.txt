@@ -4,3 +4,4 @@ django-environ
 django-webpack-loader
 djangorestframework
 psycopg2
+asgi-redis

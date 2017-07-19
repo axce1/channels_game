@@ -189,3 +189,21 @@ class GameLog(models.Model):
 
     def __str__(self):
         return 'Game #{} Log'.format(self.game.id)
+
+
+
+# use old signal style
+from django.db.models.signals import post_save
+from channels import Group, Channel
+import json
+from .serializers import GameSerializer
+
+def new_game_hadler(**kwargs):
+    if kwargs['created']:
+        avail_game_list = Game.get_available_games()
+        print(avail_game_list)
+        avail_serializer = GameSerializer(avail_game_list, many=True)
+        Group('lobby').send({'text': json.dumps(avail_serializer.data)},
+                            immediately=True)
+
+post_save.connect(new_game_hadler, sender=Game)
